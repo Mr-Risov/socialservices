@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Service</title>
+    <link rel="stylesheet" href="/home/dark/Desktop/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <div id="selectionPage" class="container">
+        <!-- Selection page content -->
+        <h1>Select a Service</h1>
+        <select id="serviceSelect" onchange="displayProducts()">
+            <option value="">--Select Service--</option>
+            <option value="instagram">Instagram Service</option>
+            <option value="facebook">Facebook Service</option>
+            <option value="youtube">YouTube Service</option>
+            <option value="telegram">Telegram Service</option>
+        </select>
+        <div id="description" class="hidden"></div>
+
+        <div id="productContainer" class="hidden">
+            <h2>Select a Product</h2>
+            <select id="productSelect" onchange="displayForm()">
+                <option value="">--Select Product--</option>
+            </select>
+
+            <div id="formContainer" class="hidden">
+                <h3>Enter Details</h3>
+                <form id="detailsForm" onsubmit="redirectToPaymentPage(event)">
+                    <label for="urlInput">URL:</label>
+                    <input type="text" id="urlInput" required>
+                    <label for="quantityInput">Quantity:</label>
+                    <input type="number" id="quantityInput" min="1" oninput="autoCalculatePrice()" required>
+                    <div id="priceDisplay"></div>
+                    <button type="submit">Buy</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="paymentPage" class="container payment-container hidden">
+        <a href="#" onclick="backToSelection()" class="back-link">&larr; Back</a>
+        <h1>Payment</h1>
+        <div id="amountDisplay"></div>
+        <div id="qrCode"></div>
+        <button onclick="openUPIApp()">Open UPI App</button>
+        <button onclick="shareQRCode()">Share QR Code</button>
+    </div>
+
+    <script src="/home/dark/Desktop/scripts.js"></script>
+</body>
+</html>
+
